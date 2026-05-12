@@ -165,7 +165,7 @@ class OpenAICompatibleClient:
 # ============================================================
 import re
 
-def run_agent(max_loops: int = 5):
+def run_agent(user_prompt, max_loops: int = 5):
     """运行 Agent 主循环"""
     # TODO: 设置环境变量
     API_KEY = os.environ.get("DEEPSEEK_API_KEY")
@@ -180,7 +180,6 @@ def run_agent(max_loops: int = 5):
     )
 
     # 初始化 prompt_history，放入用户请求
-    user_prompt = "你好，请帮我查询一下今天北京的天气，然后根据天气推荐一个合适的旅游景点。"
     # 打印用户输入
     prompt_history = [f"用户请求： {user_prompt}"]
 
@@ -239,7 +238,10 @@ def run_agent(max_loops: int = 5):
 # ============================================================
 # 🚀 启动入口
 # ============================================================
+from prompt_toolkit import prompt
 if __name__ == "__main__":
     print("🌍 Ch01 智能旅行助手")
-   
-    run_agent()
+    # user_prompt = "你好，请帮我查询一下今天北京的天气，然后根据天气推荐一个合适的旅游景点。"
+    user_prompt = prompt("请输入你的旅行需求：")
+
+    run_agent(user_prompt=user_prompt)
