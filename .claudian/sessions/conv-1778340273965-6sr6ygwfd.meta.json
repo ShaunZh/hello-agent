@@ -1,0 +1,23 @@
+{
+  "id": "conv-1778340273965-6sr6ygwfd",
+  "providerId": "claude",
+  "title": "Identify AI model type",
+  "titleGenerationStatus": "success",
+  "createdAt": 1778340273968,
+  "updatedAt": 1778491678912,
+  "lastResponseAt": 1778491678912,
+  "sessionId": "9c90f89e-332a-46ca-a1ee-3466e240b59b",
+  "providerState": {
+    "providerSessionId": "9c90f89e-332a-46ca-a1ee-3466e240b59b"
+  },
+  "usage": {
+    "model": "sonnet[1m]",
+    "inputTokens": 33375,
+    "cacheCreationInputTokens": 1552,
+    "cacheReadInputTokens": 81972,
+    "contextWindow": 1000000,
+    "contextTokens": 116899,
+    "percentage": 12,
+    "contextWindowIsAuthoritative": true
+  }
+}
