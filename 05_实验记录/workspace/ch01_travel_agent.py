@@ -42,7 +42,6 @@ Action的格式必须是以下之一：
 # API: https://wttr.in/{city}?format=j1
 # 需要提取: current_condition[0] 中的天气描述和温度
 # ============================================================
-from email import message
 import requests
 
 def get_weather(city: str) -> str:
@@ -153,7 +152,7 @@ class OpenAICompatibleClient:
                 messages = messages,
                 stream = False
             )
-            answer = response.choice[0].message.content
+            answer = response.choices[0].message.content
             print("大语言模型响应成功。")
             return answer
         except Exception as e: 
@@ -166,44 +165,81 @@ class OpenAICompatibleClient:
 # ============================================================
 import re
 
-def run_agent(user_prompt: str, max_loops: int = 5):
+def run_agent(max_loops: int = 5):
     """运行 Agent 主循环"""
     # TODO: 设置环境变量
-    # TODO: 初始化 LLM 客户端
+    API_KEY = os.environ.get("DEEPSEEK_API_KEY")
+    BASE_URL = os.environ.get("BASE_URL")
+    MODEL_ID = os.environ.get("MODEL_ID")
 
-    # TODO: 初始化 prompt_history，放入用户请求
-    # TODO: 打印用户输入
+    # 初始化 LLM 客户端
+    llm = OpenAICompatibleClient(
+        model=MODEL_ID, 
+        api_key=API_KEY, 
+        base_url=BASE_URL
+    )
+
+    # 初始化 prompt_history，放入用户请求
+    user_prompt = "你好，请帮我查询一下今天北京的天气，然后根据天气推荐一个合适的旅游景点。"
+    # 打印用户输入
+    prompt_history = [f"用户请求： {user_prompt}"]
+
+    print(f"用户输入：{user_prompt}\n" + "="*40)
 
     for i in range(max_loops):
+        print(f"---- 循环 {i + 1} ----\n")
         # Step 1: 构建 Prompt
-        # TODO: 把 prompt_history 合并成完整 prompt
+        full_prompt = "\n".join(prompt_history)
 
         # Step 2: 调用 LLM 思考
-        # TODO: 调用 llm.generate(full_prompt, AGENT_SYSTEM_PROMPT)
-        # TODO: 用正则截断多余的 Thought-Action 对
+        llm_output = llm.generate(full_prompt, system_prompt=AGENT_SYSTEM_PROMPT)
+
+        #  用正则截断多余的 Thought-Action 对
+        match = re.search(r'(Thought:.*?Action:.*?)(?=\n\s*(?:Thought:|Action:|Observation:)|\Z)',
+        llm_output, re.DOTALL)
+
+        if match:
+            truncated = match.group(1).strip()
+            if truncated != llm_output.strip():
+                llm_output = truncated
+                print("已截断多余的 Thought-Action 对")
+        print(f"模型输出: \n{llm_output}\n")
+        prompt_history.append(llm_output)
 
         # Step 3: 解析 Action
-        # TODO: 用正则提取 Action 内容
-        # TODO: 如果解析失败，返回错误 Observation
-        # TODO: 如果是 Finish[...]，提取最终答案并结束
+        action_match = re.search(r"Action: (.*)", llm_output, re.DOTALL)
+        if not action_match:
+            observation = "错误: 未能解析到 Action 字段。请确保你的回复严格遵循'Thought: ... Action: ...' 的格式。"
+            observation_str = f"Observation: {observation}"
+            print(f"{observation_str}\n" + "="*40)
+            prompt_history.append(observation_str)
+            continue
+        action_str = action_match.group(1).strip()
 
-        # Step 4: 执行工具调用
-        # TODO: 解析工具名和参数
-        # TODO: 从 available_tools 中查找并调用对应工具
-        # TODO: 获取工具的返回结果（observation）
+        if action_str.startswith("Finish"):
+            final_answer = re.match(r"Finish\[(.*)\]", action_str).group(1)
+            print(f"任务完成，最终答案: {final_answer}")
+            break
+        tool_name = re.search(r"(\w+)\(", action_str).group(1)
+        args_str = re.search(r"\((.*)\)", action_str).group(1)
+        kwargs = dict(re.findall(r'(\w+)="([^"]*)"', args_str))
 
-        # Step 5: 记录观察
-        # TODO: 把 Observation 追加到 prompt_history
-        # TODO: 打印 Observation 到控制台
-        pass
-
-    print("⚠️ 达到最大循环次数，任务未自动结束。")
-    return None
+        if tool_name in available_tools:
+            observation = available_tools[tool_name](**kwargs)
+        else:
+            observation = f"错误:未定义的工具 '{tool_name}'"
+        
+        # 记录观察结果
+        observation_str = f"Observation: {observation}"
+        print(f"{observation_str}\n" + "="*40)
+        prompt_history.append(observation_str)
+    # print("⚠️ 达到最大循环次数，任务未自动结束。")
+    # return None
 
 # ============================================================
 # 🚀 启动入口
 # ============================================================
 if __name__ == "__main__":
     print("🌍 Ch01 智能旅行助手")
-    user_prompt = "你好，请帮我查询一下今天北京的天气，然后根据天气推荐一个合适的旅游景点。"
-    run_agent(user_prompt)
+   
+    run_agent()
