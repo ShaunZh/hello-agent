@@ -192,6 +192,9 @@ def run_agent(user_prompt, max_loops: int = 5):
 
         # Step 2: 调用 LLM 思考
         llm_output = llm.generate(full_prompt, system_prompt=AGENT_SYSTEM_PROMPT)
+        print("-------------------")
+        print(f"模型输出原始结果：\n{llm_output}\n")
+        print("-------------------")
 
         #  用正则截断多余的 Thought-Action 对
         match = re.search(r'(Thought:.*?Action:.*?)(?=\n\s*(?:Thought:|Action:|Observation:)|\Z)',
