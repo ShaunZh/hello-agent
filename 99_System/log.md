@@ -31,24 +31,27 @@ tags:
 
 ## 2026-05-09 (第二次操作)
 
-操作：`/chapter Ch01 初识智能体`
+操作：`/chapter Ch04 智能体经典范式构建`
 
 创建：
-- [[Ch01_初识智能体]] — 章节笔记
-- [[Agent]] — 概念卡片
-- [[PEAS]] — 概念卡片
-- [[Thought-Action-Observation]] — 概念卡片
-- [[Ch01_旅行助手实验记录]] — 实验记录
+- [[Ch04_智能体经典范式构建]] — 章节笔记
+- [[ReAct]] — 范式卡片
+- [[Plan-and-Solve]] — 范式卡片
+- [[Reflection]] — 范式卡片
+- [[ToolExecutor]] — 架构卡片
+- [[Memory_Reflection]] — 架构卡片
+- [[Ch04_ReAct实验记录]] — 实验记录
+- `05_实验记录/workspace/ch04_react_agent.py` — ReAct 空白骨架代码
 
 更新：
-- [[99_System/学习进度]] — Ch01 标记为"已有笔记"
-- [[00_学习地图/Hello-Agents 学习地图]] — 添加章节文件路径索引
-- [[99_System/问题清单]] — 添加 4 个 Ch01 相关问题
+- [[99_System/学习进度]] — Ch04 标记为"已有笔记"，统计更新为 2/16 章
+- [[99_System/问题清单]] — 添加 4 个 Ch04 相关问题
 
 发现的问题：
-- 旅行助手实验需要 API KEY，暂未实际运行
-- 学习地图中关联的学习路线和实际章节进度表需保持同步
+- 三种范式都依赖正则解析 LLM 输出，这是脆弱的
+- SerpApi 需要付费注册，实验中可能需要替代方案
 
 下一步建议：
-- 运行 Ch01 旅行助手实验（需要配置 API KEY）
-- 继续学习 Ch02 或直接进入 Ch04 ReAct 范式
+- 编写 ch04_react_agent.py 的空白骨架
+- 运行 ReAct 实验验证 Thought-Action-Observation 循环
+- 可选：继续实现 Plan-and-Solve 或 Reflection 范式
