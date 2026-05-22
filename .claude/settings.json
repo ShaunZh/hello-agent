@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import hello_agents.agents.react_agent; print\\(hello_agents.agents.react_agent.__file__\\)\")"
+    ]
+  }
+}
