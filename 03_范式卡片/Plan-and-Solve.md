@@ -78,7 +78,6 @@ for step in plan:                    # 阶段2: 执行
     result = executor.solve(step, question, plan, history)
     history.append(result)
 return history[-1]                   # 最后一步的结果 = 最终答案
-```
 
 ## 核心组件
 

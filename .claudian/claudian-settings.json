@@ -19,6 +19,7 @@
     "scrollDownKey": "s",
     "focusInputKey": "i"
   },
+  "requireCommandOrControlEnterToSend": false,
   "locale": "en",
   "providerConfigs": {
     "claude": {
@@ -47,7 +48,8 @@
       "environmentVariables": "",
       "environmentHash": "",
       "installationMethodsByHost": {
-        "zhangjies-MacBook-Pro.local": "native-windows"
+        "zhangjies-MacBook-Pro.local": "native-windows",
+        "device:69f11805-9c34-4d5f-8300-45e533e1a3e3": "native-windows"
       },
       "wslDistroOverridesByHost": {}
     },
@@ -60,6 +62,7 @@
       "modelAliases": {},
       "preferredThinkingByModel": {},
       "selectedMode": "",
+      "thinkingOptionsByModel": {},
       "visibleModels": []
     }
   },
