@@ -2,7 +2,32 @@
   "permissions": {
     "allow": [
       "Bash(python -c \"import hello_agents.agents.react_agent; print\\(hello_agents.agents.react_agent.__file__\\)\")",
-      "Bash(git check-ignore:*)"
+      "Bash(git check-ignore:*)",
+      "Bash(.venv/bin/pip install:*)",
+      "Bash(uv pip:*)",
+      "Bash(.venv/bin/python -c \"import dashscope\")",
+      "Bash(.venv/bin/python -c \":*)",
+      "Bash(nslookup f5616056-973c-4981-b964-2f0d2252a409.databases.neo4j.io)",
+      "Bash(.venv/bin/python -c \"import pdfplumber; import pypdfium2; import pdfminer; print\\(''PDF deps OK''\\)\")",
+      "Bash(ls /Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/python*)",
+      "Bash(/Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/python -c \"import pdfplumber; print\\(''pdfplumber:'', pdfplumber.__version__\\)\")",
+      "Bash(/Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/python -c \"import markitdown; print\\(''markitdown OK''\\)\")",
+      "Bash(uv add:*)",
+      "Bash(.venv/bin/python -c \"import qdrant_client; print\\(qdrant_client.__version__\\)\")",
+      "Bash(/Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/python -c \"import qdrant_client; print\\(qdrant_client.__version__\\)\")",
+      "Bash(/Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/python -c \"from importlib.metadata import version; print\\(version\\(''qdrant-client''\\)\\)\")",
+      "Bash(/Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/python -c \"from qdrant_client import QdrantClient; print\\([m for m in dir\\(QdrantClient\\) if ''search'' in m.lower\\(\\) or ''query'' in m.lower\\(\\)]\\)\")",
+      "Bash(/Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/python -c \"from importlib.metadata import version; print\\(version\\(''hello-agents''\\)\\)\")",
+      "Bash(pip index:*)",
+      "Bash(/Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/pip list:*)",
+      "Bash(curl -s https://pypi.org/pypi/hello-agents/json)",
+      "Bash(/Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(''''Latest:'''', d[''''info''''][''''version'''']\\); [print\\(v\\) for v in list\\(d[''''releases''''].keys\\(\\)\\)[-5:]]\")",
+      "Bash(/Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/python -c \"from hello_agents import __version__; print\\(__version__\\)\")",
+      "Bash(/Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/python -c \"from hello_agents.tools import MemoryTool, RAGTool; print\\(''OK''\\)\")",
+      "Bash(/Users/zhangjie/Documents/Learn-ai/Hello-Agents/05_实验记录/workspace/.venv/bin/python -c \":*)",
+      "Bash(git -C /Users/zhangjie/Documents/Learn-ai/Hello-Agents status --short)",
+      "Bash(git -C /Users/zhangjie/Documents/Learn-ai/Hello-Agents diff)",
+      "Bash(git -C /Users/zhangjie/Documents/Learn-ai/Hello-Agents log --oneline -5)"
     ]
   }
 }

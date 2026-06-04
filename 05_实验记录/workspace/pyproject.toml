@@ -6,10 +6,14 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "google-search-results>=2.4.2",
+    "gradio>=6.16.0",
     "hello-agents>=0.2.0",
+    "markitdown[pdf]>=0.1.6",
+    "neo4j>=6.2.0",
     "openai>=2.36.0",
     "prompt-toolkit>=3.0.52",
     "python-dotenv>=1.2.2",
+    "qdrant-client>=1.18.0",
     "requests>=2.34.0",
     "tavily-python>=0.7.24",
 ]

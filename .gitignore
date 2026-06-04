@@ -167,3 +167,12 @@ AGENTS.md
 !test_tools.py
 .workbuddy/
 memory/
+
+# 会话元数据
+.claudian/
+
+# 05_实验记录：忽略数据库、生成产物、凭证和大文件
+05_实验记录/workspace/memory_data/
+05_实验记录/workspace/*_report_session_*.json
+05_实验记录/workspace/Neo4j-*.txt
+05_实验记录/workspace/*.pdf
