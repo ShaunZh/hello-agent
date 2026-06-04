@@ -4,20 +4,20 @@
   "title": "Identify AI model type",
   "titleGenerationStatus": "success",
   "createdAt": 1778340273968,
-  "updatedAt": 1780454499620,
-  "lastResponseAt": 1780454499620,
+  "updatedAt": 1780566157663,
+  "lastResponseAt": 1780566157663,
   "sessionId": "9c90f89e-332a-46ca-a1ee-3466e240b59b",
   "providerState": {
     "providerSessionId": "9c90f89e-332a-46ca-a1ee-3466e240b59b"
   },
   "usage": {
     "model": "sonnet[1m]",
-    "inputTokens": 1290,
+    "inputTokens": 852,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 177024,
+    "cacheReadInputTokens": 250368,
     "contextWindow": 1000000,
-    "contextTokens": 178314,
-    "percentage": 18,
+    "contextTokens": 251220,
+    "percentage": 25,
     "contextWindowIsAuthoritative": true
   }
 }

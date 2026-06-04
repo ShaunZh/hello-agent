@@ -51,7 +51,25 @@ tags:
 - 三种范式都依赖正则解析 LLM 输出，这是脆弱的
 - SerpApi 需要付费注册，实验中可能需要替代方案
 
+## 2026-06-04
+
+操作：`/chapter Ch08 记忆与检索`
+
+创建：
+- [[Ch08_记忆与检索]] — 章节笔记
+- [[Memory]] — 概念卡片
+- [[RAG]] — 概念卡片
+- [[MemoryTool]] — 架构卡片
+- [[RAGTool]] — 架构卡片
+- [[Ch08_记忆与检索实验记录]] — 实验记录
+
+更新：
+- [[99_System/学习进度]] — Ch08 标记为"已有笔记"，统计更新为 3/16 章
+
+发现的问题：
+- Ch08 实验需要 Qdrant + Neo4j 等外部服务，配置较复杂
+- 实验更适合"体验式学习"而非"从零编写"
+
 下一步建议：
-- 编写 ch04_react_agent.py 的空白骨架
-- 运行 ReAct 实验验证 Thought-Action-Observation 循环
-- 可选：继续实现 Plan-and-Solve 或 Reflection 范式
+- 安装 hello-agents 0.2.0，运行 MemoryTool 基础操作示例
+- 或继续 Ch09 上下文工程
